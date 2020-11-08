@@ -70,5 +70,35 @@ public class SingleLinkedList {
     // reverse the linked list RECURSIVELY
     public void reverse() {
         // homework
+        if (size < 2) {
+            return;
+        } else {
+            reverse(null, head.next);
+        }
     }
+    public ListNode reverse(ListNode prev, ListNode node) {
+        //stopping condition
+        if (node.next == null) {
+            return node;
+        }
+        ListNode p0 = reverse(node, node.next);
+        ListNode p1 = node;
+        node.next = p1;
+        node = p0;
+        p1.next = null;
+        return node;
+    }
+/*
+node.next = node;
+node = p0
+
+if (head == null) {
+            return newHead;
+        }
+        ListNode next = head.next;
+        head.next = newHead;
+        newHead = head;
+        head = next;
+        return reverse(head, newHead);
+ */
 }
